@@ -1,0 +1,283 @@
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background: none repeat scroll 0 0 #ffffff;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  margin: 100px auto;
+  animation: rotatePreloader 1.2s infinite ease-in-out;
+}
+
+body {
+  margin: 0;
+  background: url('../images/background/background.jpg') no-repeat;
+  background-size: 100% 100%;
+  font-family: 'Maven Pro', sans-serif;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+header img {
+  width: 100px;
+  margin-left: 20px;
+}
+header .timer {
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+}
+header .volume {
+  width: 26px;
+  margin: 12px;
+  cursor: pointer;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0px auto;
+  min-height: calc(100% - 130px);
+}
+main h1, main h2 {
+  margin: 0px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+.logo img {
+  width: 300px;
+}
+main ul {
+  padding: 0px;
+  list-style: none;
+}
+button {
+  margin-top: 30px;
+  padding: 20px 40px;
+  font-size: 20px;
+  background: inherit;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+  animation: yellowPulse 2s infinite;
+}
+button:active {
+  transform: translate(1px, 1px);
+}
+/*Radio buttons*/
+.radioBtn {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+label {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-left: 22px;
+  padding-right: 10px;
+  line-height: 34px;
+  font-size: 23px;
+  cursor: pointer;
+}
+label::before {
+  content: " ";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #202226;
+  border-radius: 4px;
+  z-index: -1;
+}
+.radioBtn:checked + label {
+  padding-left: 10px;
+  color: #fff;
+}
+.radioBtn:checked + label::before {
+  top: -1px;
+  width: 100%;
+  height: 100%;
+  background: #202226;
+}
+label,
+label::before {
+  transition: .25s all ease;
+}
+
+main div.wrapperViewCards {
+  margin-top: 20px;
+}
+main div.wrapperViewCards img {
+  transition: all .3s ease;
+  cursor: pointer;
+  margin: 20px;
+}
+main div.wrapperViewCards .activeViewCard {
+  transform: scale(1.3);
+}
+.containerCongratulation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.3);
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 1.5s linear;
+}
+.containerCongratulation .content {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+  width: 180px;
+  top: calc(50% - 95px);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  background: white;
+  padding: 0 20px 20px 20px;
+}
+.containerCongratulation .content button {
+  width: 130px;
+  height: 14px;
+  padding: 16px;
+  font-size: 16px;
+  line-height: 2px;
+  margin-top: 10px;
+}
+/*Cards*/
+section.wrapper {
+  width: 140px;
+  height: 190px;
+  perspective: 800px;
+  margin: 5px;
+  display: inline-block;
+  cursor: pointer;
+  animation: fadeIn 0.5s linear;
+  animation-fill-mode: backwards;
+}
+.wrapper .card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  display: inline-block;
+}
+.wrapper .card figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.wrapper .card .front {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.wrapper .card .back {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transform: rotateY( 180deg );
+}
+.wrapper .card.active {
+  transform: rotateY( 180deg );
+}
+.removed {
+  opacity: 0!important;
+  transition: opacity .3s linear .5s;
+  cursor: default;
+}
+.removed .card {
+  transform: rotateY( 180deg );
+}
+
+footer {
+  height: 60px;
+  margin: 10px 0px;
+}
+footer > div {
+  display: flex;
+  justify-content: center;
+}
+footer div img {
+  height: 60px;
+  border-radius: 50%;
+}
+footer div h5 {
+  align-self: center;
+  font-size: 20px;
+  margin: 0px 10px;
+  transform: scaleY(2.5);
+}
+footer > div > div {
+  align-self: center;
+  text-align: left;
+  padding-top: 10px;
+}
+footer div address {
+  font-style: normal;
+  font-size: 14px;
+}
+footer div address a {
+  text-decoration: none;
+  color: inherit;
+}
+footer div address a:hover {
+  text-decoration: underline;
+}
+
+/*Animations*/
+@keyframes rotatePreloader {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes yellowPulse {
+  from {
+      background-color: #fc9200;
+      -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+      background-color: #ffb515;
+      -webkit-box-shadow: 0 0 18px #ffb515;
+  }
+  to {
+      background-color: #fc9200;
+      -webkit-box-shadow: 0 0 9px #333;
+  }
+}
